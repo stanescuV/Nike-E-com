@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700;800&family=Oswald:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  font-family: "Open Sans", sans-serif;
+}
+
+.css-est7g0-MuiTypography-root {
+  font-size: 1.8rem;
+}
+.css-1e4e1qc-MuiButtonBase-root-MuiButton-root {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
+.css-hip9hq-MuiPaper-root-MuiAppBar-root {
+  background-color: #fdfbf4 !important;
+  color: #000000;
+}
+
+.css-1pz7awu-MuiButtonBase-root-MuiIconButton-root {
+  color: #000000 !important;
+}

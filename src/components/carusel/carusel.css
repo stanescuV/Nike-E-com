@@ -1,0 +1,101 @@
+.sneakers {
+  box-sizing: border-box;
+  width: 90%;
+  height: 80%;
+  border: 1px solid #191919;
+  background-size: cover;
+}
+.rec {
+  z-index: 1000;
+}
+
+.carusel-title {
+  width: 100%;
+  height: 100%;
+  font-size: 8vw;
+  margin-left: 10px;
+  font-family: "Dharma Gothic E";
+  font-style: normal;
+  font-weight: 700;
+  word-spacing: 5px;
+  user-select: none;
+}
+
+.sneakers-info {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#sneakers-name {
+  font-size: 25px;
+  padding: 0;
+  margin: 0;
+  padding-top: 10px;
+}
+
+#sneakers-price {
+  padding: 0;
+  margin: 0;
+  font-size: 17px;
+}
+
+/*REACT CAROUSEL */
+
+.rec.rec-arrow {
+  display: none;
+}
+
+button.rec-dot {
+  background-color: #cd9a3494;
+  box-shadow: 0 0 1px 3px #fdfbf427;
+}
+
+button.rec-dot:hover,
+button.rec-dot:active,
+button.rec-dot:focus {
+  box-shadow: 0 0 1px 3px #7d7c7a27;
+}
+
+.rec.rec-arrow {
+  background-color: #fdfbf4 !important;
+}
+
+.rec.rec-arrow:active,
+.rec.rec-arrow:focus,
+.rec.rec-arrow:hover {
+  color: #cd9a3494 !important;
+}
+
+/*MEDIA QUERY */
+
+/* Styles for phones */
+@media only screen and (max-width: 767px) {
+  #sneakers-price {
+    font-size: 20px;
+  }
+
+  .carusel-title {
+    font-size: 8vh;
+  }
+
+  #sneakers-name {
+    font-size: 21px;
+  }
+}
+
+/* Styles for tablets */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .rec.rec-arrow {
+    display: none;
+  }
+
+  #sneakers-price {
+    font-size: 25px;
+  }
+
+  #sneakers-name {
+    font-size: 27px;
+  }
+}
