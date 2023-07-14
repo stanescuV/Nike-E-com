@@ -3,6 +3,7 @@ import Carousel from "react-elastic-carousel";
 import "./carusel.css";
 import styled from "styled-components";
 import Marquee from "react-fast-marquee";
+import ButtonCart from "../buttons/Buttons";
 
 function Carusel() {
   const [date, setDate] = useState([]);
@@ -34,7 +35,6 @@ function Carusel() {
     width: 99.99%;
     height: 600px;
 
-    z-index: -10;
     border: 1px solid #191919;
   `;
 
@@ -48,13 +48,16 @@ function Carusel() {
 
   function renderItems(date) {
     return date.map((item) => (
-      <Item>
-        <img className="sneakers" src={item.src}></img>
-        <div className="sneakers-info">
-          <h4 id="sneakers-name">{item.name.toUpperCase()}</h4>
-          <p id="sneakers-price"> R: {(item.pret * 1).toFixed(2)}$</p>
-        </div>
-      </Item>
+      <div>
+        <Item>
+          <img className="sneakers" src={item.src}></img>
+          <div className="sneakers-info">
+            <h4 id="sneakers-name">{item.name.toUpperCase()}</h4>
+            <p id="sneakers-price"> R: {(item.pret * 1).toFixed(2)}$</p>
+          </div>
+          <ButtonCart />
+        </Item>
+      </div>
     ));
   }
   return (

@@ -4,9 +4,10 @@
   height: 80%;
   border: 1px solid #191919;
   background-size: cover;
+  pointer-events: none;
 }
 .rec {
-  z-index: 1000;
+  z-index: 0;
 }
 
 .carusel-title {
@@ -98,4 +99,17 @@ button.rec-dot:focus {
   #sneakers-name {
     font-size: 27px;
   }
+}
+
+/*BUTTON*/
+.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-colorPrimary.MuiIconButton-sizeMedium.css-1kuq5xv-MuiButtonBase-root-MuiIconButton-root {
+  z-index: 100000;
+  width: 40px;
+  font-size: 2.5rem;
+
+  color: green;
+}
+
+.css-i4bv87-MuiSvgIcon-root {
+  width: auto;
 }
