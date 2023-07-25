@@ -1,3 +1,7 @@
+.AppC {
+  background-color: antiquewhite;
+}
+
 .sneakers {
   box-sizing: border-box;
   width: 90%;
@@ -15,7 +19,7 @@
   height: 100%;
   font-size: 8vw;
   margin-left: 10px;
-  font-family: "Dharma Gothic E";
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 700;
   word-spacing: 5px;
@@ -44,9 +48,9 @@
 
 /*REACT CAROUSEL */
 
-.rec.rec-arrow {
+/* .rec.rec-arrow {
   display: none;
-}
+} */
 
 button.rec-dot {
   background-color: #cd9a3494;
@@ -83,6 +87,10 @@ button.rec-dot:focus {
 
   #sneakers-name {
     font-size: 21px;
+  }
+
+  .rec.rec-arrow {
+    display: none;
   }
 }
 

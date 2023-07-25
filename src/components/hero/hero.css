@@ -1,4 +1,5 @@
 .hero-imgs {
+  background-color: antiquewhite;
   display: flex;
   flex-direction: column;
   padding-top: 20px;
