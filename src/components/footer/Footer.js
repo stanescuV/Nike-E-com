@@ -1,6 +1,7 @@
 import React from "react";
 import "./footer.css";
 import logo from "./img/logo-footer.png";
+import Marquee from "react-fast-marquee";
 import fb from "./img/fb.png";
 import ig from "./img/ig.png";
 import gh from "./img/gh.png";
@@ -30,7 +31,9 @@ function Footer() {
             <a href="#">Contact Us</a>
           </div>
         </div>
-        <img className="logo" src={logo}></img>
+        <Marquee>
+          <img className="logo" src={logo}></img>
+        </Marquee>
       </div>
       <div className="copyright">© 2023 JACK LEMKUS - ALL RIGHTS RESERVED</div>
     </div>

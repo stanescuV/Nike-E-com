@@ -55,6 +55,7 @@
 
 .logo {
   display: flex;
+  pointer: none;
   align-items: flex-end;
   width: 100%;
   height: 250px;
