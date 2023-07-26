@@ -29,6 +29,7 @@ function Footer() {
             <a href="#">About</a>
             <a href="#">FAQ</a>
             <a href="#">Contact Us</a>
+            <a href="#">Privacy Policy</a>
           </div>
         </div>
         <Marquee>
