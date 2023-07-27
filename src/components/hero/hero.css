@@ -25,6 +25,11 @@
   overflow: hidden;
 }
 
+/* hoover */
+
+.grid-img :hover {
+  fill: rgba(100, 100, 100, 0.1);
+}
 /*media query pentru phone*/
 
 @media (max-width: 750px) {

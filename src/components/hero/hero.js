@@ -9,13 +9,23 @@ import "./hero.css";
 function hero() {
   return (
     <div className="hero-imgs">
-      <img className="grid-img" id="air-jordan" src={AirJordan}></img>
+      <a href="#">
+        <img className="grid-img" id="air-jordan" src={AirJordan}></img>
+      </a>
 
       <div className="sub-imgs">
-        <img className="grid-img" id="air-jordan2" src={AirJordan2}></img>
-        <img className="grid-img" id="nb" src={NewBalance}></img>
-        <img className="grid-img" id="nike-air" src={NikeAir}></img>
-        <img className="grid-img" id="oakley" src={Oakley}></img>
+        <a href="#">
+          <img className="grid-img" id="air-jordan2" src={AirJordan2}></img>
+        </a>
+        <a href="#">
+          <img className="grid-img" id="nike-air" src={NikeAir}></img>
+        </a>
+        <a href="#">
+          <img className="grid-img" id="nb" src={NewBalance}></img>
+        </a>
+        <a href="#">
+          <img className="grid-img" id="oakley" src={Oakley}></img>
+        </a>
       </div>
     </div>
   );
