@@ -4,7 +4,7 @@ import "./carusel.css";
 import styled from "styled-components";
 import Marquee from "react-fast-marquee";
 
-import ButtonCart from "../buttons/Buttons";
+import IconButton from "../buttons/Buttons";
 
 function Carusel() {
   const [date, setDate] = useState([]);
@@ -56,7 +56,9 @@ function Carusel() {
             <h4 id="sneakers-name">{item.name.toUpperCase()}</h4>
             <p id="sneakers-price"> R: {(item.pret * 1).toFixed(2)}$</p>
           </div>
-          <ButtonCart key={item.id} />
+          <div onClick={() => console.log(item.name)}>
+            <IconButton key={item.id} />
+          </div>
         </Item>
       </div>
     ));
