@@ -4,10 +4,33 @@ import "./carusel.css";
 import styled from "styled-components";
 import Marquee from "react-fast-marquee";
 import IconButton from "../buttons/Buttons";
+import { TrendingUp } from "@mui/icons-material";
 
 function Carusel() {
   const [date, setDate] = useState([]);
+  const [cart, setCart] = useState([]);
 
+  /*FUNCTION ADD ITEM cart*/
+
+  function addItemCart(item) {
+    //one item is added to the cart, if exists qt++, if not add it to the cart
+    const existingItem = cart.find((obj) => obj.id === item.id);
+
+    if (existingItem) {
+      // If it exists
+      existingItem.quantity++;
+    } else {
+      // If it doesn't exist
+      setCart([
+        ...cart,
+        { name: item.name, price: item.pret, id: item.id, quantity: 1 },
+      ]);
+    }
+    console.log(cart);
+    //localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
+  /*FETCH*/
   useEffect(() => {
     fetch("http://localhost:3001/data")
       .then((r) => r.json())
@@ -56,9 +79,9 @@ function Carusel() {
             <p id="sneakers-price"> R: {(item.pret * 1).toFixed(2)}$</p>
           </div>
           <div
-            onClick={() =>
-              console.log({ 1: item.name, 2: item.pret, 3: item.id })
-            }
+            onClick={() => {
+              addItemCart(item);
+            }}
           >
             <IconButton key={item.id} />
           </div>
