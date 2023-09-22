@@ -32,9 +32,7 @@ function Footer() {
             <a href="#">Privacy Policy</a>
           </div>
         </div>
-        <Marquee>
-          <img className="logo" src={logo}></img>
-        </Marquee>
+        <img className="logo" src={logo}></img>
       </div>
       <div className="copyright">© 2023 JACK LEMKUS - ALL RIGHTS RESERVED</div>
     </div>

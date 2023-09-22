@@ -27,7 +27,23 @@ function Carusel() {
       ]);
     }
     console.log(cart);
-    //localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+
+  //delete 1 item in the cart
+  function deleteItem(item) {
+    let filteredCart = [];
+    cart.map((product) => {
+      if (product.id === item.id && product.quantity === 1) {
+        filteredCart = cart.filter((prod) => prod.id !== item.id);
+      }
+    });
+    setCart([...filteredCart]);
+  }
+
+  //delete all cart items
+  function deleteAllCart(cart) {
+    setCart([]);
   }
 
   /*FETCH*/
