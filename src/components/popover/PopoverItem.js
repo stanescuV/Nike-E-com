@@ -3,7 +3,11 @@ import styled from "styled-components";
 import "../popover/popover.css";
 
 function PopoverItem() {
-  const cart = JSON.parse(localStorage.getItem("cart"));
+  const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem("cart");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+
   let cartProducts;
 
   for (let i = 0; i <= cart.length; i++) {
@@ -29,4 +33,5 @@ function PopoverItem() {
     return <div>{cartProducts}</div>;
   }
 }
+
 export default PopoverItem;

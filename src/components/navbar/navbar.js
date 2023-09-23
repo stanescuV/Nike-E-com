@@ -178,7 +178,14 @@ function ResponsiveAppBar() {
                 horizontal: "left",
               }}
             >
-              <PopoverItem></PopoverItem>
+              <div
+                style={{
+                  width: "200px",
+                  height: "125px",
+                }}
+              >
+                <PopoverItem></PopoverItem>
+              </div>
             </Popover>
           </div>
           ;
