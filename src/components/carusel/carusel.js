@@ -8,7 +8,15 @@ import { TrendingUp } from "@mui/icons-material";
 
 function Carusel() {
   const [date, setDate] = useState([]);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem("cart");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+
+  // INITIALIZAM CART UL LA INCEPUT SI IL BAGAM IN LOCAL STORAGE
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   /*FUNCTION ADD ITEM cart*/
 
@@ -23,7 +31,13 @@ function Carusel() {
       // If it doesn't exist
       setCart([
         ...cart,
-        { name: item.name, price: item.pret, id: item.id, quantity: 1 },
+        {
+          name: item.name,
+          price: item.pret,
+          id: item.id,
+          picture: item.src,
+          quantity: 1,
+        },
       ]);
     }
     console.log(cart);
@@ -108,6 +122,14 @@ function Carusel() {
   return (
     <>
       <div className="AppC">
+        {/*DELETE ALL CART JUST TESTING */}
+        <button
+          onClick={() => {
+            deleteAllCart();
+          }}
+        >
+          Delete all cart
+        </button>
         <Marquee>
           <h3 className="carusel-title">JUST DROPPED</h3>
         </Marquee>

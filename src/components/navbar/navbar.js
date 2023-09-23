@@ -14,6 +14,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import "./navbar.css";
 import { Link } from "react-router-dom";
+import PopoverItem from "../popover/PopoverItem";
 
 const pages = [
   "LAUNCHES",
@@ -165,7 +166,7 @@ function ResponsiveAppBar() {
               variant="contained"
               onClick={handleClick}
             >
-              Open Popover
+              🛒
             </Button>
             <Popover
               id={id}
@@ -177,7 +178,7 @@ function ResponsiveAppBar() {
                 horizontal: "left",
               }}
             >
-              <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+              <PopoverItem></PopoverItem>
             </Popover>
           </div>
           ;
