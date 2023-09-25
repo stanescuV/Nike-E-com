@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Carousel from "react-elastic-carousel";
 import "./carusel.css";
 import styled from "styled-components";
 import Marquee from "react-fast-marquee";
 import IconButton from "../buttons/Buttons";
 import { TrendingUp } from "@mui/icons-material";
+import { CartContext } from "../../App";
 
 function Carusel() {
   const [date, setDate] = useState([]);
-  const [cart, setCart] = useState(() => {
-    const savedCart = localStorage.getItem("cart");
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+
+  const { cart, setCart } = useContext(CartContext);
 
   // INITIALIZAM CART UL LA INCEPUT SI IL BAGAM IN LOCAL STORAGE
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
+    console.log(cart);
   }, [cart]);
 
   /*FUNCTION ADD ITEM cart*/
@@ -40,7 +40,6 @@ function Carusel() {
         },
       ]);
     }
-    console.log(cart);
     localStorage.setItem("cart", JSON.stringify(cart));
   }
 

@@ -1,37 +1,25 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import "../popover/popover.css";
+import { CartContext } from "../../App";
+import { render } from "@testing-library/react";
 
 function PopoverItem() {
-  const [cart, setCart] = useState(() => {
-    const savedCart = localStorage.getItem("cart");
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+  const { cart, setCart } = useContext(CartContext);
 
-  let cartProducts;
-
-  for (let i = 0; i <= cart.length; i++) {
-    if (cart && cart.length > 0) {
-      cartProducts = (
-        <div className="container">
-          <div className="cartPopover">
-            <img className="articlePhoto" src={cart[i].picture}></img>
-            <p className="articleName"> {cart[i].name}</p>
-            <div className="buttons">
-              <button className="add">+</button>
-              <button className="remove">-</button>
-              <button className="removeAll">X</button>
-            </div>
-          </div>
-        </div>
-      );
-    } else {
-      cartProducts = (
-        <div> Your cart is empty mate, go and buy something ! </div>
-      );
-    }
-    return <div>{cartProducts}</div>;
-  }
+  return (
+    <div>
+      {cart.length > 0 ? (
+        cart.map((product) => {
+          if (cart.length > 0) {
+            return <div id={product.id}>{product.name}</div>;
+          }
+        })
+      ) : (
+        <div> your cart is empty </div>
+      )}
+    </div>
+  );
 }
 
 export default PopoverItem;
