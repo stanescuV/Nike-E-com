@@ -1,6 +1,6 @@
 import "./App.css";
-import { createContext, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { createContext, useEffect, useState } from "react";
+import { Route, Routes, json } from "react-router-dom";
 import Home from "./pages/Home";
 import Launches from "./pages/Launches";
 import Sneakers from "./pages/Sneakers";
@@ -8,7 +8,11 @@ import Admin from "./pages/Admin";
 
 export const CartContext = createContext([]);
 function App() {
-  const [cart, setCart] = useState([]);
+  let existingCart = localStorage.getItem("cart");
+  const [cart, setCart] = useState(existingCart ? JSON.parse(existingCart) : []);
+
+
+  
 
   return (
     <div className="App">
@@ -17,6 +21,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/launches" element={<Launches />} />
+          
           <Route path="/sneakers" element={<Sneakers />} />
         </Routes>
       </CartContext.Provider>

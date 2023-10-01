@@ -14,9 +14,11 @@ function Carusel() {
 
   // INITIALIZAM CART UL LA INCEPUT SI IL BAGAM IN LOCAL STORAGE
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-    console.log(cart);
-  }, [cart]);
+   
+    localStorage.getItem("cart", JSON.stringify(cart));
+    
+
+  }, []);
 
   /*FUNCTION ADD ITEM cart*/
 
