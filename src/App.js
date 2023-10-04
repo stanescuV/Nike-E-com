@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Launches from "./pages/Launches";
 import Sneakers from "./pages/Sneakers";
 import Admin from "./pages/Admin";
+import Checkout from "./pages/Checkout";
 
 export const CartContext = createContext([]);
 function App() {
@@ -21,6 +22,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/launches" element={<Launches />} />
+          <Route path="/checkout" element={<Checkout />} />
+
           
           <Route path="/sneakers" element={<Sneakers />} />
         </Routes>

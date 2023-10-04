@@ -26,7 +26,7 @@ function PopoverItem() {
       ) : (
         <div> your cart is empty </div>
       )}
-      <Link to="/LAUNCHES"> FINALIZEAZA COMANDA</Link>
+      <Link to="/Checkout"> FINALIZEAZA COMANDA</Link>
     </div>
   );
 }
