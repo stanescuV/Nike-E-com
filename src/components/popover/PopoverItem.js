@@ -6,6 +6,7 @@ import { CartContext } from "../../App";
 
 function PopoverItem() {
   const { cart, setCart } = useContext(CartContext);
+  
 
   return (
     <div>
@@ -26,7 +27,8 @@ function PopoverItem() {
       ) : (
         <div> your cart is empty </div>
       )}
-      <div onClick={()=>{
+      {/* IMPLEMENTARE STRIPE -*-*-*-*-*-*-**--*-
+      <div onClick={()=>
         fetch('http://localhost:3002/create-checkout-session',{
           method: "POST",
           headers: {
@@ -34,6 +36,7 @@ function PopoverItem() {
           },
           body: JSON.stringify({
             items:[
+              //ar trebuii un array de obiecte aici cu spread operator ca sa trimita cantitatile si Id ul pe server 
               {id:1, quantity:2},
               {id:2, quantity:4}
             ]
@@ -48,12 +51,12 @@ function PopoverItem() {
         console.error(e.error)
       })
       }}>
-
       <button > FINALIZEAZA COMANDA</button>
-      {/*<Link to="/Checkout" > FINALIZEAZA COMANDA</Link>*/}
+    */}
+      <Link to="/Checkout" > FINALIZEAZA COMANDA</Link>
       </div>
       
-    </div>
+    
   );
 }
 

@@ -23,8 +23,6 @@ function App() {
           <Route path="/admin" element={<Admin />} />
           <Route path="/launches" element={<Launches />} />
           <Route path="/checkout" element={<Checkout />} />
-
-          
           <Route path="/sneakers" element={<Sneakers />} />
         </Routes>
       </CartContext.Provider>
