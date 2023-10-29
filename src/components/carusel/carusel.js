@@ -13,12 +13,11 @@ function Carusel() {
   const { cart, setCart } = useContext(CartContext);
 
   // INITIALIZAM CART UL LA INCEPUT SI IL BAGAM IN LOCAL STORAGE
-  useEffect(() => {
-   
-    localStorage.getItem("cart", JSON.stringify(cart));
-    
-
-  }, []);
+  
+  useEffect(() =>{localStorage.getItem("cart", JSON.stringify(cart))}
+  , []);
+  useEffect(()=>{localStorage.setItem("cart", JSON.stringify(cart))},[cart]);
+  //no implicit return on useEffect 
 
   /*FUNCTION ADD ITEM cart*/
 
@@ -42,9 +41,7 @@ function Carusel() {
         },
       ]);
     }
-    localStorage.setItem("cart", JSON.stringify(cart));
   }
-
   //delete 1 item in the cart
   function deleteItem(item) {
     let filteredCart = [];
