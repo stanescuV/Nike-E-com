@@ -31,15 +31,13 @@ function Checkout() {
   }
 
 
-  function trimiteDate (){
+  function trimiteDate (comanda){
     fetch('http://localhost:3001/comanda', {
         method: "POST",
         headers: {
           "Content-Type":"application/json",
         },
-        body: JSON.stringify([...cartCheckout
-
-        ])
+        body: JSON.stringify(comanda)
       })
   }
 
@@ -51,7 +49,12 @@ function Checkout() {
     <div className='form-container'>
 
       <form className="id-form" onSubmit={(e)=>{
-        console.log({email : e.target[0].value, country: e.target[1].value, region: e.target[2].value, street: e.target[3].value, birth: e.target[4].value, tel: e.target[5].value })
+
+        let formular = {email : e.target[0].value, country: e.target[1].value, region: e.target[2].value, street: e.target[3].value, birth: e.target[4].value, tel: e.target[5].value }
+        let cartItems = [...cart];
+        let comanda = {form : formular, items: cartItems};
+        trimiteDate(comanda);
+        console.log(comanda);
         //previne default html 
         e.preventDefault();
       }}>
