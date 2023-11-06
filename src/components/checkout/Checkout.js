@@ -79,7 +79,7 @@ function Checkout() {
         <input name="birth" type="date"></input>
         <label form="tel-input">Tel : </label>
         <input name="tel" type="tel"></input>
-        <button type="submit" onClick={()=> trimiteDate()}>Submit</button>
+        <button type="submit" >Submit</button>
       </form>
       <div>
 
