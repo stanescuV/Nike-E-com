@@ -19,7 +19,7 @@
   height: 100%;
   font-size: 8vw;
   margin-left: 10px;
-  font-family: "Open Sans";
+  font-family: "DramaBold";
   font-style: normal;
   font-weight: 700;
   word-spacing: 5px;
@@ -120,4 +120,27 @@ button.rec-dot:focus {
 
 .css-i4bv87-MuiSvgIcon-root {
   width: auto;
+}
+
+
+/*FONT */
+@font-face {
+  font-family: DramaBold;
+  src: url("../../../font/DharmaGothicE_Bold_R.otf") format("opentype");
+}
+
+
+@font-face {
+  font-family: DramaHeavy;
+  src: url("../../../font/DharmaGothicE_Heavy_R.otf") format("opentype");
+}
+
+@font-face {
+  font-family: DramaLight;
+  src: url("../../../font/DharmaGothicE_ExLight_R.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Drama;
+  src: url("../../../font/DharmaGothicE_Regular_R.otf") format("opentype");
 }

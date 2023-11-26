@@ -128,18 +128,22 @@ function Carusel() {
         >
           Delete all cart
         </button>
-        <Marquee>
+        <Marquee speed={75}>
           <h3 className="carusel-title">JUST DROPPED</h3>
+
         </Marquee>
         <Carousel breakPoints={breakPoints}>{renderItems(nikeEl)}</Carousel>
 
-        <Marquee>
+
+        <Marquee speed={75}>
           <h3 className="carusel-title">CEREMONY</h3>
+
         </Marquee>
         <Carousel breakPoints={breakPoints}>{renderItems(ceremonyEl)}</Carousel>
 
-        <Marquee>
+        <Marquee speed={75}>
           <h3 className="carusel-title">NIKE DUNK</h3>
+
         </Marquee>
         <Carousel breakPoints={breakPoints}>{renderItems(jordanEl)}</Carousel>
       </div>
