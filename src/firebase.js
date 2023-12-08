@@ -32,3 +32,5 @@ createUserWithEmailAndPassword(auth, "victor@gmail.com", "123456")
     const errorMessage = error.message;
     // ..
   });
+
+  export default app;
