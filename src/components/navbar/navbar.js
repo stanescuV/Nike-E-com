@@ -188,14 +188,17 @@ function ResponsiveAppBar() {
               </div>
             </Popover>
           </div>
-          ;
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+          <Link to="/sign-up">
+          <Avatar className="avatar" sx={{ margin: "5px", cursor: "pointer" }}></Avatar>
+          </Link>
+         {/* <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Profile">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
-            <Menu
+            
+            {/* <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
@@ -216,8 +219,9 @@ function ResponsiveAppBar() {
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
-            </Menu>
+            </Menu> 
           </Box>
+            */}
         </Toolbar>
       </Container>
     </AppBar>
