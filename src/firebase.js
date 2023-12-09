@@ -1,36 +1,22 @@
-import { initializeApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 // FIREBASE configuration 
 const firebaseConfig = {
-    apiKey:process.env.local.REACT_APP_APIKEY,
-    authDomain:process.env.local.REACT_APP_AUTHDOMAIN ,
-    projectId:process.env.local. REACT_APP_PROJECTID,
-    storageBucket:process.env.local.REACT_APP_STORAGEBUCKET ,
-    messagingSenderId:process.env.local.REACT_APP_MESSAGINGSENDERID ,
-    appId:process.env.local.REACT_APP_APPID ,
-    measurementId: process.env.local.REACT_APP_MEASURMENTID
+  apiKey:process.env.REACT_APP_APIKEY,
+  authDomain:process.env.REACT_APP_AUTHDOMAIN ,
+  projectId:process.env.REACT_APP_PROJECTID,
+  storageBucket:process.env.REACT_APP_STORAGEBUCKET ,
+  messagingSenderId:process.env.REACT_APP_MESSAGINGSENDERID ,
+  appId:process.env.REACT_APP_APPID ,
+  measurementId: process.env.REACT_APP_MEASURMENTID
 };
 
 //starting the app
-const app = initializeApp(firebaseConfig);
 
-//starting the authentication
+const app = firebase.initializeApp(firebaseConfig)
+//authentication instance
+export const auth = app.auth();
 
-export const auth = getAuth();
-createUserWithEmailAndPassword(auth, "victor@gmail.com", "123456")
-  .then((userCredential) => {
-    console.log(userCredential)
-    // Signed up 
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    console.log(error)
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-  });
-
-  export default app;
+export default app;

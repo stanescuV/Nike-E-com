@@ -8,10 +8,18 @@ import Admin from "./pages/Admin";
 import Checkout from "./pages/Checkout";
 import SignUp from "./components/sign/SignUp";
 import SignIn from "./components/sign/SignIn";
+import { AuthProvider } from "./contexts/AuthContext";
+
+//CONTEXTS
+
 //cart context
 export const CartContext = createContext([]);
+
 //auth context
-export const AuthContext = createContext([]);
+// export const AuthContext = createContext([]);
+
+
+
 function App() {
   let existingCart = localStorage.getItem("cart");
   const [cart, setCart] = useState(existingCart ? JSON.parse(existingCart) : []);
@@ -21,6 +29,7 @@ function App() {
 
   return (
     <div className="App">
+      <AuthProvider>
       <CartContext.Provider value={{ cart, setCart }}>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -30,9 +39,9 @@ function App() {
           <Route path="/sneakers" element={<Sneakers />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
-
         </Routes>
       </CartContext.Provider>
+      </AuthProvider>
     </div>
   );
 }
