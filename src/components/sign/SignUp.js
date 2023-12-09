@@ -1,6 +1,7 @@
 import {React, useRef, useState} from 'react'
 import "./signup.css"
 import { useAuth } from "../../contexts/AuthContext";
+import { Link } from 'react-router-dom';
 
 
 function SignUp() {
@@ -31,37 +32,41 @@ function SignUp() {
   }
 
   return (
-    <div className='form-sign-up'>
-      <form onSubmit={handleSubmit}>
-        <h2>Ready to Sign Up ?</h2>
-        {/*SHOW THE CURRENT USER ON THE SCREEN*/ }
-        {currentUser && currentUser.email}
-        {/*SHOW THE ERROR*/ }
-        {error && <div style={{ color: 'red' }}>{error}</div>}
+    <>
+      <Link to="/">
+      <button>Home</button>
+      </Link>
+      <div className='form-sign-up'>
+        <form onSubmit={handleSubmit}>
+          <h2>Ready to Sign Up ?</h2>
+          {/*SHOW THE CURRENT USER ON THE SCREEN*/ }
+          {currentUser && currentUser.email}
+          {/*SHOW THE ERROR*/ }
+          {error && <div style={{ color: 'red' }}>{error}</div>}
 
-        {/*EMAIL SECTION*/ }
-        
-        <div className="input-container">
-            <label>Email </label>
-            <input type="email" name="email" ref={emailRef}  />
-        </div>
+          {/*EMAIL SECTION*/ }
+          
+          <div className="input-container">
+              <label>Email </label>
+              <input type="email" name="email" ref={emailRef}  />
+          </div>
 
-        {/*PASSWORD SECTION*/ }
-        <div className="input-container">
-            <label>Password </label>
-            <input type="password" name="pass" ref={passwordRef} />
-        </div>
-        <div className="input-container">
-            <label>Confirm Password </label>
-            <input type="password" name="pass" ref={confirmPasswordRef} />
-        </div>
-        <div className="button-container" >
-            <button type="submit" disabled={loading}> Submit</button>
-        </div>
-      </form>
+          {/*PASSWORD SECTION*/ }
+          <div className="input-container">
+              <label>Password </label>
+              <input type="password" name="pass" ref={passwordRef} />
+          </div>
+          <div className="input-container">
+              <label>Confirm Password </label>
+              <input type="password" name="pass" ref={confirmPasswordRef} />
+          </div>
+          <div className="button-container" >
+              <button type="submit" disabled={loading}> Submit</button>
+          </div>
+        </form>
 
-    </div>
-  )
+      </div>
+    </>)
 }
 
 export default SignUp
