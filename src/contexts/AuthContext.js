@@ -15,14 +15,15 @@ export function AuthProvider({children}) {
         return auth.createUserWithEmailAndPassword(email, password) 
     }
     
+    //user session 
     useEffect(()=>{
-
        const unsubscribe = auth.onAuthStateChanged(user => {
             setCurrentUser(user)
         })
         return unsubscribe
     },[])
 
+    //valoarea pe care o primesc toti copiii din context
     const value = {
         currentUser,
         signUp

@@ -39,7 +39,7 @@ function SignUp() {
       <div className='form-sign-up'>
         <form onSubmit={handleSubmit}>
           <h2>Ready to Sign Up ?</h2>
-          {/*SHOW THE CURRENT USER ON THE SCREEN*/ }
+          {/*SHOW THE CURRENT USER.email ON THE SCREEN*/ }
           {currentUser && currentUser.email}
           {/*SHOW THE ERROR*/ }
           {error && <div style={{ color: 'red' }}>{error}</div>}
