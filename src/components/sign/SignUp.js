@@ -20,16 +20,22 @@ function SignUp() {
     if (passwordRef.current.value !== confirmPasswordRef.current.value){
       return setError("Password do not match")
     }
-    try{
+    
       setError("")
       setLoading(true);
-      await signUp(emailRef.current.value, passwordRef.current.value)
-
-    } catch {
-      setError("Failed to create an account")
-    }
+      await signUp(emailRef.current.value, passwordRef.current.value).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        if (errorCode == 'auth/weak-password') {
+          setError('The password is too weak.');
+        }
+        console.log(error);
+      });
+    
+   
     setLoading(false);
   }
+ 
 
   return (
     <>
@@ -61,7 +67,7 @@ function SignUp() {
               <input type="password" name="pass" ref={confirmPasswordRef} />
           </div>
           <div className="button-container" >
-              <button type="submit" disabled={loading}> Submit</button>
+              <button type="submit" disabled={loading}> Submit </button>
           </div>
         </form>
 

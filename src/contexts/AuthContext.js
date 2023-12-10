@@ -1,4 +1,4 @@
-import React, {useContext, useState,useEffect} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import {auth} from "../firebase"
 
 const AuthContext = React.createContext();
@@ -12,9 +12,25 @@ export function AuthProvider({children}) {
 
     function signUp(email, password){
         //care returneaza un promise
-        return auth.createUserWithEmailAndPassword(email, password) 
+       
+            return auth.createUserWithEmailAndPassword(email, password)
+   
     }
     
+    //Sign In function 
+    
+  async function signIn(email, password) {
+    const userCredential = await auth.signInWithEmailAndPassword(email, password)
+    .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorMessage)
+  })
+    const user = userCredential.user;
+    return user
+}
+
+
     //user session 
     useEffect(()=>{
        const unsubscribe = auth.onAuthStateChanged(user => {
@@ -26,8 +42,9 @@ export function AuthProvider({children}) {
     //valoarea pe care o primesc toti copiii din context
     const value = {
         currentUser,
-        signUp
+        signUp, signIn
     }
+
 
     return (
         <AuthContext.Provider value={value}>
