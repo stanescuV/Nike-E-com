@@ -2,11 +2,13 @@ import React, {useState,useContext} from 'react'
 import "./checkout.css"
 import Navbar from "../navbar/navbar"
 import { CartContext } from "../../App";
+import { useAuth } from '../../contexts/AuthContext';
 
 
 function Checkout() {
   const { cart, setCart } = useContext(CartContext);
-
+  const {currentUser}= useAuth();
+  const uid = currentUser.uid; 
    
   const [email, setEmail] = useState("")
 
@@ -50,11 +52,12 @@ function Checkout() {
 
       <form className="id-form" onSubmit={(e)=>{
 
-        let formular = {email : e.target[0].value, country: e.target[1].value, region: e.target[2].value, street: e.target[3].value, birth: e.target[4].value, tel: e.target[5].value }
-        let cartItems = [...cart];
-        let comanda = {form : formular, items: cartItems};
+        let formular = {email : e.target[0].value, country: e.target[1].value, region: e.target[2].value, street: e.target[3].value, birth: e.target[4].value, tel: e.target[5].value  }
+        let cartItems = [...cart,];
+        let comanda = {form : formular, items: cartItems, uid: uid};
         trimiteDate(comanda);
         console.log(comanda);
+        console.log(currentUser.uid)
         //previne default html 
         e.preventDefault();
       }}>
