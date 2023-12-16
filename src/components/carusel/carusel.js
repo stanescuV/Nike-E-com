@@ -4,7 +4,6 @@ import "./carusel.css";
 import styled from "styled-components";
 import Marquee from "react-fast-marquee";
 import IconButton from "../buttons/Buttons";
-import { TrendingUp } from "@mui/icons-material";
 import { CartContext } from "../../App";
 
 function Carusel() {
@@ -117,6 +116,8 @@ function Carusel() {
       </div>
     ));
   }
+
+  
   return (
     <>
       <div className="AppC">

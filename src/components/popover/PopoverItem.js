@@ -9,23 +9,26 @@ function PopoverItem() {
   
 
   return (
-    <div>
+    <div className="container-global">
       {cart.length > 0 ? (
         cart.map((product) => {
-          if (cart.length > 0) {
+          
             return (
-              <div className="container">
-                <div id={product.id}>
-                  {product.name} {product.price}$
-                </div>
-                <img className="prodPhoto" src={product.picture}></img>
-              </div>
+             <div className="products">
+                  <div className="pd-info">
+                    <img className="prodPhoto" src={product.picture}></img>
+                    <div className="product-cart"id={product.id}></div>
+                  </div>
+                <div className="pd-price">{product.name}</div>
+                <div>{product.price}$</div>
+    
+            </div>
             );
             
-          }
+          
         })
       ) : (
-        <div> your cart is empty </div>
+        <div className="container-ppv"> your cart is empty </div>
       )}
       {/* IMPLEMENTARE STRIPE -*-*-*-*-*-*-**--*-
       <div onClick={()=>
@@ -53,8 +56,11 @@ function PopoverItem() {
       }}>
       <button > FINALIZEAZA COMANDA</button>
     */}
-      <Link to="/Checkout" > FINALIZEAZA COMANDA</Link>
-      </div>
+      
+      
+      <Link style={{display: "block"}} to="/Checkout" > FINALIZEAZA COMANDA</Link>
+
+    </div>
       
     
   );

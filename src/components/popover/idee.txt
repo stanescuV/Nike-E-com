@@ -1,0 +1,20 @@
+<bigContainer>
+    <topBar></topBar>
+    <products> 
+        <product-details>
+            <productImg>
+            <productDescription>
+        </product-details>
+        
+        <productPrice></productPrice>
+    </products>
+    <checkoutDiv>
+        <link>        
+            <button></button>
+        </link>
+    </checkoutDiv>
+    <order>
+        <Subtotal></Subtotal>
+        <Sum></Sum>
+    </order>
+</bigContainer>

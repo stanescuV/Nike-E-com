@@ -10,7 +10,6 @@ import Container from "@mui/material/Container";
 import Popover from "@mui/material/Popover";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import "./navbar.css";
 import { Link } from "react-router-dom";
@@ -180,8 +179,9 @@ function ResponsiveAppBar() {
             >
               <div
                 style={{
-                  width: "200px",
-                  height: "125px",
+                  width: "250px",
+                  height: "100%",
+                  
                 }}
               >
                 <PopoverItem></PopoverItem>

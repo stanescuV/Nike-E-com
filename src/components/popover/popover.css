@@ -4,7 +4,30 @@
   box-sizing: border-box;
 }
 
+.container-ppv{
+  display: flex;
+  justify-content: column;
+  background-color: #fafafa;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.products{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+ 
+}
+
+
+
 .prodPhoto {
   width: 50px;
   height: 50px;
 }
+
+/* .product-cart{
+
+} */
