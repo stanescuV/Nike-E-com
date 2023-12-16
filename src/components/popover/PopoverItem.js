@@ -9,18 +9,30 @@ function PopoverItem() {
   
 
   return (
-    <div className="container-global">
+    <div className="bigContainer">
+      <div className="topBar">
+        <p>Article 101</p>
+        <p>Total SAR</p>
+      </div>
       {cart.length > 0 ? (
         cart.map((product) => {
           
             return (
              <div className="products">
-                  <div className="pd-info">
-                    <img className="prodPhoto" src={product.picture}></img>
-                    <div className="product-cart"id={product.id}></div>
+                <div className="pd-info">
+                  <img className="prodPhoto" src={product.picture}></img>
+                  <div className="product-cart"id={product.id}>{product.name}</div>
+                </div>
+                <div className="pd-price">
+                  <div>{product.price}$</div>
+                  <div className="pd-qty">
+                    <div className="buttons">
+                      <button >-</button>
+                      <p>{product.quantity}</p>
+                      <button>+</button>
+                    </div>
                   </div>
-                <div className="pd-price">{product.name}</div>
-                <div>{product.price}$</div>
+                </div>
     
             </div>
             );
@@ -28,7 +40,7 @@ function PopoverItem() {
           
         })
       ) : (
-        <div className="container-ppv"> your cart is empty </div>
+        <div className="bigContainer"> your cart is empty </div>
       )}
       {/* IMPLEMENTARE STRIPE -*-*-*-*-*-*-**--*-
       <div onClick={()=>
