@@ -8,6 +8,7 @@ import Admin from "./pages/Admin";
 import Checkout from "./pages/Checkout";
 import SignUp from "./components/sign/SignUp";
 import SignIn from "./components/sign/SignIn";
+import Orders from "./pages/Orders";
 import { AuthProvider } from "./contexts/AuthContext";
 
 //CONTEXTS
@@ -39,6 +40,7 @@ function App() {
           <Route path="/sneakers" element={<Sneakers />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/orders" element ={<Orders />}/> 
         </Routes>
       </CartContext.Provider>
       </AuthProvider>

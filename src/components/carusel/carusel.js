@@ -6,7 +6,7 @@ import Marquee from "react-fast-marquee";
 import IconButton from "../buttons/Buttons";
 import { CartContext } from "../../App";
 
-function Carusel() {
+export default function Carusel() {
   const [date, setDate] = useState([]);
 
   const { cart, setCart } = useContext(CartContext);
@@ -26,7 +26,9 @@ function Carusel() {
 
     if (existingItem) {
       // If it exists
+
       existingItem.quantity++;
+      setCart([...cart])
     } else {
       // If it doesn't exist
       setCart([
@@ -152,4 +154,5 @@ function Carusel() {
   );
 }
 
-export default Carusel;
+
+

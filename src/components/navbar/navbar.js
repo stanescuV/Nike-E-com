@@ -159,7 +159,7 @@ function ResponsiveAppBar() {
             ))}
           </Box>
           {/*POPOVER BUTTON CART */}
-          <div>
+          
             <Button
               aria-describedby={id}
               variant="contained"
@@ -187,7 +187,7 @@ function ResponsiveAppBar() {
                 <PopoverItem></PopoverItem>
               </div>
             </Popover>
-          </div>
+          
           <Link to="/sign-up">
           <Avatar className="avatar" sx={{ margin: "5px", cursor: "pointer" }}></Avatar>
           </Link>

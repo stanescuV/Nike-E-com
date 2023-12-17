@@ -1,12 +1,50 @@
 import React, { useContext, useState } from "react";
 import "../popover/popover.css";
 import { Link } from "react-router-dom";
-
 import { CartContext } from "../../App";
 
 function PopoverItem() {
   const { cart, setCart } = useContext(CartContext);
-  
+    /*FUNCTION ADD ITEM cart*/
+
+  function addItemCart(item) {
+    //one item is added to the cart, if exists qt++, if not add it to the cart
+    const existingItem = cart.find((obj) => obj.id === item.id);
+   
+    if (existingItem) {
+      // If it exists
+      existingItem.quantity++;
+      setCart([...cart]);
+    } else {
+      // If it doesn't exist
+      setCart([
+        ...cart,
+        {
+          name: item.name,
+          price: item.pret,
+          id: item.id,
+          picture: item.src,
+          quantity: 1,
+        },
+      ]);
+    }
+  }
+  //delete 1 item in the cart
+  function deleteItem(item) {
+    let filteredCart = [];
+    cart.map((product) => {
+      if (product.id === item.id && product.quantity === 1) {
+        filteredCart = cart.filter((prod) => prod.id !== item.id);
+      }
+    });
+    setCart([...filteredCart]);
+  }
+
+  //delete all cart items
+  function deleteAllCart(cart) {
+    setCart([]);
+  }
+
 
   return (
     <div className="bigContainer">
@@ -16,7 +54,6 @@ function PopoverItem() {
       </div>
       {cart.length > 0 ? (
         cart.map((product) => {
-          
             return (
              <div className="products">
                 <div className="pd-info">
@@ -29,7 +66,7 @@ function PopoverItem() {
                     <div className="buttons">
                       <button >-</button>
                       <p>{product.quantity}</p>
-                      <button>+</button>
+                      <button onClick={()=>{addItemCart(product)}}>+</button>
                     </div>
                   </div>
                 </div>

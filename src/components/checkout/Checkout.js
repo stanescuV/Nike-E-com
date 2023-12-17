@@ -43,8 +43,6 @@ function Checkout() {
       })
   }
 
-
-
   return (
     <div>
       <Navbar />
