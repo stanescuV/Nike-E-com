@@ -44,6 +44,10 @@
   flex-direction: column;
 }
 
+.pd-tag{
+  margin-left: 5px;
+} 
+
 .buttons{
   display: flex;
   align-items: center;
@@ -51,14 +55,45 @@
 
 }
 
+.buttons :first-child{
+  padding-bottom: 1.5px;
+  margin-right: 3px;
+}
+
+.buttons :last-child{
+  margin-left: 3px;
+}
+
+
 .buttons button{
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid #000;
-  width: 15px;
-  height: 15px;
+  background-color:#fafafa ;
+  width: 13px;
+  height: 13px;
 
+}
+
+.checkout-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.checkout-btn{
+  background: #000;
+  width: 100px;
+  height:25px;
+  flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 
 .prodPhoto {

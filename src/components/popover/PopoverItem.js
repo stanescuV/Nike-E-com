@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import "../popover/popover.css";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../App";
+import { render } from "@testing-library/react";
 
 function PopoverItem() {
   const { cart, setCart } = useContext(CartContext);
@@ -31,19 +32,47 @@ function PopoverItem() {
   }
   //delete 1 item in the cart
   function deleteItem(item) {
-    let filteredCart = [];
-    cart.map((product) => {
-      if (product.id === item.id && product.quantity === 1) {
-        filteredCart = cart.filter((prod) => prod.id !== item.id);
-      }
-    });
-    setCart([...filteredCart]);
+    console.log(cart);
+    let arrFiltrat = [];
+
+    //if qt = 1 
+    if(item.quantity === 1){
+      arrFiltrat = cart.filter((obj)=>obj.id !== item.id)
+      setCart([...arrFiltrat])
+    }
+
+    //if qt > 1 
+    if(item.quantity>1){
+      item.quantity--;
+      setCart([...cart])
+    }
+
   }
 
-  //delete all cart items
-  function deleteAllCart(cart) {
-    setCart([]);
-  }
+  const renderCartItems = cart.map((product) => {
+      return (
+      
+       <div className="products">
+          <div className="pd-info">
+            <img className="prodPhoto" src={product.picture}></img>
+            <div className="product-cart"id={product.id}>{product.name}</div>
+          </div>
+          <div className="pd-price">
+            <div className="pd-tag">{product.price}$</div>
+            <div className="pd-qty">
+              <div className="buttons">
+                <button onClick={()=> {deleteItem(product)}} >-</button>
+                <p>{product.quantity}</p>
+                <button onClick={()=>{addItemCart(product)}}>+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        
+      );
+  })
+ 
 
 
   return (
@@ -53,32 +82,15 @@ function PopoverItem() {
         <p>Total SAR</p>
       </div>
       {cart.length > 0 ? (
-        cart.map((product) => {
-            return (
-             <div className="products">
-                <div className="pd-info">
-                  <img className="prodPhoto" src={product.picture}></img>
-                  <div className="product-cart"id={product.id}>{product.name}</div>
-                </div>
-                <div className="pd-price">
-                  <div>{product.price}$</div>
-                  <div className="pd-qty">
-                    <div className="buttons">
-                      <button >-</button>
-                      <p>{product.quantity}</p>
-                      <button onClick={()=>{addItemCart(product)}}>+</button>
-                    </div>
-                  </div>
-                </div>
-    
-            </div>
-            );
-            
-          
-        })
+        renderCartItems
       ) : (
         <div className="bigContainer"> your cart is empty </div>
       )}
+       <div className="checkout-div">
+          <Link to="/Checkout" >
+            <button className="checkout-btn">Checkout</button>
+          </Link>
+        </div>
       {/* IMPLEMENTARE STRIPE -*-*-*-*-*-*-**--*-
       <div onClick={()=>
         fetch('http://localhost:3002/create-checkout-session',{
@@ -105,9 +117,6 @@ function PopoverItem() {
       }}>
       <button > FINALIZEAZA COMANDA</button>
     */}
-      
-      
-      <Link style={{display: "block"}} to="/Checkout" > FINALIZEAZA COMANDA</Link>
 
     </div>
       
