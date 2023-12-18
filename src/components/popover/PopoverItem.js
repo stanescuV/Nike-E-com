@@ -2,10 +2,10 @@ import React, { useContext, useState } from "react";
 import "../popover/popover.css";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../App";
-import { render } from "@testing-library/react";
 
 function PopoverItem() {
   const { cart, setCart } = useContext(CartContext);
+  
     /*FUNCTION ADD ITEM cart*/
 
   function addItemCart(item) {
@@ -46,9 +46,12 @@ function PopoverItem() {
       item.quantity--;
       setCart([...cart])
     }
-
+    
   }
-
+  //subtotal function
+  
+  
+  //takes cart with products and renders items on screen
   const renderCartItems = cart.map((product) => {
       return (
       
@@ -90,6 +93,17 @@ function PopoverItem() {
           <Link to="/Checkout" >
             <button className="checkout-btn">Checkout</button>
           </Link>
+        </div>
+        <div className="order-info">
+          <div className="subtotal">
+            <p className="order-text" id="subtotal">Subtotal</p>
+            <p className="order-text" id="shipment">Shipment</p>
+            <p className="order-text" id="shipment-info">Delivery time 2-4 working days</p>
+          </div>
+          <div className="sum">
+            <p className="prices" id="total-price">100$</p>
+            <p className="prices" id="shipment-price">10$</p>
+          </div>
         </div>
       {/* IMPLEMENTARE STRIPE -*-*-*-*-*-*-**--*-
       <div onClick={()=>

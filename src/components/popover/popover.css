@@ -101,6 +101,30 @@
   height: 80px;
 }
 
-/* .product-cart{
+.order-info{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.order-text{
+color: #000;
+/* font-family: Proxima Nova; */
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+#shipment{
+  color: rgba(130, 130, 130, 0.85);
+}
+
+#shipment-info, #shipment-price{
+  color: rgba(130, 130, 130, 0.85);
+}
+
+/* .prices{
 
 } */
+
