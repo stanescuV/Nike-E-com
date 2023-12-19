@@ -22,7 +22,6 @@ export function AuthProvider({children}) {
   async function signIn(email, password) {
     const userCredential = await auth.signInWithEmailAndPassword(email, password)
     .catch((error) => {
-    const errorCode = error.code;
     const errorMessage = error.message;
     console.log(errorMessage)
   })

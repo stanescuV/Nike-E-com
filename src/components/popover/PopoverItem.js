@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../popover/popover.css";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../App";
@@ -50,6 +50,14 @@ function PopoverItem() {
   }
   //subtotal function
   
+  function calcSubtotal(cart){
+    let total = 0;
+    for(let i =0; i<cart.length ; i++){
+      let item = cart[i];
+      total += (item.quantity * item.price);
+    }
+    return total
+  }
   
   //takes cart with products and renders items on screen
   const renderCartItems = cart.map((product) => {
@@ -101,7 +109,7 @@ function PopoverItem() {
             <p className="order-text" id="shipment-info">Delivery time 2-4 working days</p>
           </div>
           <div className="sum">
-            <p className="prices" id="total-price">100$</p>
+            <p className="prices" id="total-price">{calcSubtotal(cart)}$</p>
             <p className="prices" id="shipment-price">10$</p>
           </div>
         </div>
