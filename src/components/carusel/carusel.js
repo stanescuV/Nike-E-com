@@ -123,14 +123,7 @@ export default function Carusel() {
   return (
     <>
       <div className="AppC">
-        {/*DELETE ALL CART JUST TESTING */}
-        <button
-          onClick={() => {
-            deleteAllCart();
-          }}
-        >
-          Delete all cart
-        </button>
+        
         <Marquee speed={75}>
           <h3 className="carusel-title">JUST DROPPED</h3>
 

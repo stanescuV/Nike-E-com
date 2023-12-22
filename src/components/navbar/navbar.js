@@ -14,6 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import "./navbar.css";
 import { Link } from "react-router-dom";
 import PopoverItem from "../popover/PopoverItem";
+import UserPopover from "../user/User"
 
 const pages = [
   "LAUNCHES",
@@ -24,11 +25,9 @@ const pages = [
   "CULTURE",
   "BRANDS",
 ];
-const settings = ["👻 Profile", "♥ Favorites", "🔎 Search"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   //BUTTON CART POPOVER
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -47,17 +46,12 @@ function ResponsiveAppBar() {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
+  
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  
 
   return (
     <AppBar position="static">
@@ -179,18 +173,17 @@ function ResponsiveAppBar() {
             >
               <div
                 style={{
-                  width: "250px",
+                  width: "270px",
                   height: "100%",
                   
                 }}
               >
                 <PopoverItem></PopoverItem>
               </div>
-            </Popover>
-          
-          <Link to="/sign-up">
-          <Avatar className="avatar" sx={{ margin: "5px", cursor: "pointer" }}></Avatar>
-          </Link>
+          </Popover>
+
+          {/* User Popover */}
+            <UserPopover />
         
         </Toolbar>
       </Container>
