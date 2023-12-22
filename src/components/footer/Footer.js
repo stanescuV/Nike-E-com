@@ -1,7 +1,6 @@
 import React from "react";
 import "./footer.css";
 import logo from "./img/logo-footer.png";
-import Marquee from "react-fast-marquee";
 import fb from "./img/fb.png";
 import ig from "./img/ig.png";
 import gh from "./img/gh.png";

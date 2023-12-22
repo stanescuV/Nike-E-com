@@ -7,13 +7,7 @@ function Admin() {
 
   return (
     <div>
-      <input
-        style={{ width: "300px", height: "50px" }}
-        onChange={(e) => {
-          setText(e.target.value);
-        }}
-      ></input>
-      <button onClick={() => console.log(text)}>Submit</button>
+     
     </div>
   );
 }

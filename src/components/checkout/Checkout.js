@@ -45,7 +45,6 @@ function Checkout() {
 
   return (
     <div>
-      <Navbar />
     <div className='form-container'>
 
       <form className="id-form" onSubmit={(e)=>{
