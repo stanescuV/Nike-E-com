@@ -1,4 +1,4 @@
-#E-commerce Website made with React / Node / MSSQL 
+#E-commerce Website made with React / Node / MSSQL / FireBase
 
 This project is only for trainning purpose, I've been working on it for quite a while and I still have waaaaaay too many things to improve. 
 
@@ -8,4 +8,4 @@ If you want to check the Backend, go and check Nike-Server repo(made with expres
 
 
 DEMO VIDEO : 
-https://youtu.be/s1HLphwhN7c
+https://youtu.be/wvW4B3tvr60
