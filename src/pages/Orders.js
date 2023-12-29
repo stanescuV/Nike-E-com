@@ -32,13 +32,15 @@ function Orders() {
   async function handleViewDetails(orderID) {
     try {
       if (selectedOrderID !== orderID || !isModalOpen) {
-        const response = await fetch(`http://localhost:3001/orders/${currentUser && currentUser.uid}/${orderID}`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
+        
+        if(!currentUser) throw new Error(`No Current User`);
+        
+        const response = await fetch(`http://localhost:3001/orders/${currentUser.uid}/${orderID}`);
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+       
         const orderDetailsData = await response.json();
         setOrdDetails(orderDetailsData);
-        setSelectedOrderID(orderID);
+        setSelectedOrderID(orderID); 
         if(!isModalOpen){
           toggleModal();
         }
@@ -61,7 +63,7 @@ function Orders() {
       );
     });
   }
-
+//add "you do not have any order"
   return (
     <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', margin: '200px' }}>
       {data && renderData(data)}
@@ -77,7 +79,7 @@ function Orders() {
                 <p>Product: {prod.name}</p>
                 <p>Product price: {prod.price}$</p>
                 <p>Product quantity bought: {prod.qt}</p>
-                <hr />
+                <br />
               </div>
             ))}
           </div>

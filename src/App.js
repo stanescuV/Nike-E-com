@@ -4,7 +4,7 @@ import { Route, Routes, json } from "react-router-dom";
 import Home from "./pages/Home";
 import Launches from "./pages/Launches";
 import Sneakers from "./pages/Sneakers";
-import Admin from "./pages/Admin";
+import Admin from "./components/sign/Admin";
 import Checkout from "./pages/Checkout";
 import SignUp from "./components/sign/SignUp";
 import SignIn from "./components/sign/SignIn";
