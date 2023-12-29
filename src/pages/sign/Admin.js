@@ -6,15 +6,14 @@ function Admin() {
     const { currentUser } = useAuth();
 
     useEffect(()=>{
-        if(currentUser){try{
+        if(currentUser){
+            try{
             fetch(`http://localhost:3001/admin/${currentUser.uid}`)
             .then((r)=>r.json())
             .then((rr)=> {setDate(rr); console.log(rr)}) 
-        } catch(err){ console.log(err)}
+            } catch(err){ console.log(err)}
         }   
-        
-
-},[currentUser])
+    },[currentUser])
 
     return (
     <>

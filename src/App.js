@@ -4,10 +4,10 @@ import { Route, Routes, json } from "react-router-dom";
 import Home from "./pages/Home";
 import Launches from "./pages/Launches";
 import Sneakers from "./pages/Sneakers";
-import Admin from "./components/sign/Admin";
+import Admin from "./pages/sign/Admin";
 import Checkout from "./pages/Checkout";
-import SignUp from "./components/sign/SignUp";
-import SignIn from "./components/sign/SignIn";
+import SignUp from "./pages/sign/SignUp";
+import SignIn from "./pages/sign/SignIn";
 import Orders from "./pages/Orders";
 import { AuthProvider } from "./contexts/AuthContext";
 

@@ -3,7 +3,7 @@ import React from 'react'
 import Popover from '@mui/material/Popover';
 import Avatar from "@mui/material/Avatar";
 import { Link } from "react-router-dom";
-import SignIn from "../sign/SignIn";
+import SignIn from "../../pages/sign/SignIn";
 
 
 export default function BasicPopover() {

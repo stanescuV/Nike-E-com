@@ -43,21 +43,6 @@ export default function Carusel() {
       ]);
     }
   }
-  //delete 1 item in the cart
-  function deleteItem(item) {
-    let filteredCart = [];
-    cart.map((product) => {
-      if (product.id === item.id && product.quantity === 1) {
-        filteredCart = cart.filter((prod) => prod.id !== item.id);
-      }
-    });
-    setCart([...filteredCart]);
-  }
-
-  //delete all cart items
-  function deleteAllCart(cart) {
-    setCart([]);
-  }
 
   /*FETCH*/
   useEffect(() => {
@@ -129,7 +114,7 @@ export default function Carusel() {
 
         </Marquee>
         <Carousel breakPoints={breakPoints}>{renderItems(nikeEl)}</Carousel>
-
+      
 
         <Marquee speed={75}>
           <h3 className="carusel-title">CEREMONY</h3>
