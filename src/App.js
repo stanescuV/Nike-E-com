@@ -9,6 +9,7 @@ import Checkout from "./pages/Checkout";
 import SignUp from "./pages/sign/SignUp";
 import SignIn from "./pages/sign/SignIn";
 import Orders from "./pages/Orders";
+import SuccessOrder from "./pages/SuccessOrder";
 import { AuthProvider } from "./contexts/AuthContext";
 
 //CONTEXTS
@@ -34,13 +35,14 @@ function App() {
       <CartContext.Provider value={{ cart, setCart }}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin" element={<Admin />} /> 
           <Route path="/launches" element={<Launches />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/sneakers" element={<Sneakers />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/orders" element ={<Orders />}/> 
+          <Route path="/success-order" element ={<SuccessOrder />}/> 
         </Routes>
       </CartContext.Provider>
       </AuthProvider>

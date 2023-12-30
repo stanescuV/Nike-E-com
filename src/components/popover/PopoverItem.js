@@ -92,7 +92,7 @@ function PopoverItem() {
         <p>Article 101</p>
         <p>Total SAR</p>
       </div>
-      {cart.length > 0 ? (
+      { cart.length > 0 ? (
         renderCartItems
       ) : (
         <div className="bigContainer"> your cart is empty </div>
@@ -108,12 +108,12 @@ function PopoverItem() {
           body: JSON.stringify({
             items:[...cart],
             uid: currentUser.uid
-
           })
         })
         .then(res=>{
           if (res.ok) return res.json()
-          return res.json().then(json=> Promise.reject(json))
+          return res.json()
+        .then(json=> Promise.reject(json))
         })
         .then(({url})=>{window.location=url }).catch(e=>{console.error(e.error)})
       }}  className="checkout-btn">Checkout</button>
