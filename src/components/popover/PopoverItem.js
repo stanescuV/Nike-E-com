@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import "../popover/popover.css";
-import { Link } from "react-router-dom";
 import { CartContext } from "../../App";
+import { useAuth } from "../../contexts/AuthContext";
 
 function PopoverItem() {
   const { cart, setCart } = useContext(CartContext);
-  
+  const {currentUser} = useAuth();
     /*FUNCTION ADD ITEM cart*/
 
   function addItemCart(item) {
@@ -98,9 +98,32 @@ function PopoverItem() {
         <div className="bigContainer"> your cart is empty </div>
       )}
        <div className="checkout-div">
-          <Link to="/Checkout" >
+      <div  >
+        <button style={{cursor:"pointer"}} onClick={()=>{
+        fetch('http://localhost:3001/create-checkout-session',{
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            items:[...cart],
+            uid: currentUser.uid
+
+          })
+        })
+        .then(res=>{
+          if (res.ok) return res.json()
+          return res.json().then(json=> Promise.reject(json))
+        })
+        .then(({url})=>{window.location=url }).catch(e=>{console.error(e.error)})
+      }}  className="checkout-btn">Checkout</button>
+      </div>
+         {/*
+
+           <Link  >
             <button className="checkout-btn">Checkout</button>
           </Link>
+      */}
         </div>
         <div className="order-info">
           <div className="subtotal">
@@ -113,32 +136,7 @@ function PopoverItem() {
             <p className="prices" id="shipment-price">10$</p>
           </div>
         </div>
-      {/* IMPLEMENTARE STRIPE -*-*-*-*-*-*-**--*-
-      <div onClick={()=>
-        fetch('http://localhost:3002/create-checkout-session',{
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            items:[
-              //ar trebuii un array de obiecte aici cu spread operator ca sa trimita cantitatile si Id ul pe server 
-              {id:1, quantity:2},
-              {id:2, quantity:4}
-            ]
-          })
-        })
-        .then(res=>{
-          if (res.ok) return res.json()
-          return res.json().then(json=> Promise.reject(json))
-        }).then(({url})=>{
-      window.location=url }
-      ).catch(e=>{
-        console.error(e.error)
-      })
-      }}>
-      <button > FINALIZEAZA COMANDA</button>
-    */}
+      
 
     </div>
       
