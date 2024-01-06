@@ -14,6 +14,11 @@ export function AuthProvider({children}) {
         //care returneaza un promise
        
             return auth.createUserWithEmailAndPassword(email, password)
+            .then((userCredential)=> {
+                userCredential.user.email;
+                userCredential.user.uid; 
+                fetch(`http://localhost:3001/info-user`,{method: "POST", headers:{"Content-Type": "application/json"}, body:JSON.stringify({email : userCredential.user.email, uid :  userCredential.user.uid }) })
+            })
    
     }
     
