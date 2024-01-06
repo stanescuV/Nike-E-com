@@ -13,7 +13,7 @@ export function AuthProvider({children}) {
     function signUp(email, password){
         //care returneaza un promise
        
-            return auth.createUserWithEmailAndPassword(email, password)
+             return auth.createUserWithEmailAndPassword(email, password)
             .then((userCredential)=> {
                 userCredential.user.email;
                 userCredential.user.uid; 
@@ -34,6 +34,27 @@ export function AuthProvider({children}) {
     return user
 }
 
+    // sign in as an Admin
+
+    async function signInAdmin(email, password){
+        const userCredential = await auth.signInWithEmailAndPassword(email,password)
+        .catch((err)=>{
+            const errMessage = err.message;
+            console.log(errMessage)
+        })
+        const user = userCredential.user;
+        if(user){
+            fetch("http://localhost:3001/admin", {method: "POST", headers:{"Content-Type": "application/json"}, body:JSON.stringify({uid : user.uid})})
+            .then(r=>r.json())
+            .then(rr=>{
+                if(rr.isAdmin) {return user} else { alert("you are not an admin")}
+            })
+        }
+
+
+
+    }
+
 
     //user session 
     useEffect(()=>{
@@ -46,7 +67,7 @@ export function AuthProvider({children}) {
     //valoarea pe care o primesc toti copiii din context
     const value = {
         currentUser,
-        signUp, signIn
+        signUp, signIn, signInAdmin
     }
 
 
