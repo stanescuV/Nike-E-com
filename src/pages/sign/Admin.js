@@ -1,25 +1,39 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect, useState, useRef} from 'react'
 import { useAuth } from '../../contexts/AuthContext';
 
 function Admin() {
-    const [date, setDate] = useState([]);
-    const { currentUser } = useAuth();
+    const [admin, setAdmin] = useState();
+    const { currentUser, signInAdmin } = useAuth();
+    const emailRef = useRef();
+    const passwordRef= useRef();
 
-    //de facut un sistem cu user si parola 
-    useEffect(()=>{
-        if(currentUser){
-            try{
-            fetch(`http://localhost:3001/admin/${currentUser.uid}`)
-            .then((r)=>r.json())
-            .then((rr)=> {setDate(rr); console.log(rr)}) 
-            } catch(err){ console.log(err)}
-        }   
-    },[currentUser])
+    async function handleSignInAdmin(){
+        setAdmin(await signInAdmin(emailRef.current.value, passwordRef.current.value));
+        console.log(admin)
+        emailRef.current.value = "";
+        passwordRef.current.value= "";
+    }
+    //de facut un sistem cu user si parola  
+   
 
     return (
-    <>
-        <div style={{display:"flex", justifyContent:"center", alignItems:"center", margin:"200px"}}>{ date.length && date[0].is_admin ? <>You are an Admin</> : <> You are not an Admin</>}</div>
-    </>
+    
+    <div className="form-sign-in">
+        <div >
+
+            <h2>Ready to Sign In Mr Admin?</h2>
+            <div className="input-container">
+                <label>Username </label>
+                <input type="text" name="email" ref={emailRef}  />
+            </div>
+            <div className="input-container">
+                <label>Password </label>
+                <input type="password" name="pass" ref={passwordRef} />
+            </div>
+            <button onClick={(e)=> {handleSignInAdmin()}}>Submit </button>
+        </div>
+    </div>
+    
     )
 }
 

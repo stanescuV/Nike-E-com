@@ -13,7 +13,7 @@ export function AuthProvider({children}) {
     function signUp(email, password){
         //care returneaza un promise
        
-             return auth.createUserWithEmailAndPassword(email, password)
+            return auth.createUserWithEmailAndPassword(email, password)
             .then((userCredential)=> {
                 userCredential.user.email;
                 userCredential.user.uid; 
@@ -43,16 +43,16 @@ export function AuthProvider({children}) {
             console.log(errMessage)
         })
         const user = userCredential.user;
+        console.log(user);
         if(user){
-            fetch("http://localhost:3001/admin", {method: "POST", headers:{"Content-Type": "application/json"}, body:JSON.stringify({uid : user.uid})})
-            .then(r=>r.json())
-            .then(rr=>{
-                if(rr.isAdmin) {return user} else { alert("you are not an admin")}
-            })
+            try{
+                fetch("http://localhost:3001/admin", {method: "POST", headers:{"Content-Type": "application/json"}, body:JSON.stringify({uid : user.uid})})
+                .then(r=>r.json())
+                .then(rr=>{
+                    if(rr[0].is_admin) {return user} else { alert("you are not an admin")}
+                })
+            } catch(err){console.log(err)}
         }
-
-
-
     }
 
 
