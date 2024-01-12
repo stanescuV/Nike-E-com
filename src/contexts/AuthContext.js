@@ -36,20 +36,20 @@ export function AuthProvider({children}) {
 
     // sign in as an Admin
 
-    async function signInAdmin(email, password){
+    async function signInAdmin(email, password, setAdmin){
         const userCredential = await auth.signInWithEmailAndPassword(email,password)
         .catch((err)=>{
             const errMessage = err.message;
             console.log(errMessage)
         })
         const user = userCredential.user;
-        console.log(user);
         if(user){
             try{
                 fetch("http://localhost:3001/admin", {method: "POST", headers:{"Content-Type": "application/json"}, body:JSON.stringify({uid : user.uid})})
                 .then(r=>r.json())
                 .then(rr=>{
-                    if(rr[0].is_admin) {return user} else { alert("you are not an admin")}
+                    //Merge am incercat sa pun clg in loc de return si merge
+                    if(rr[0].is_admin) {setAdmin(user.uid)} else { alert("you are not an admin")}
                 })
             } catch(err){console.log(err)}
         }

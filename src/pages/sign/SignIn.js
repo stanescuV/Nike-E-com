@@ -7,14 +7,12 @@ function SignIn() {
     const passwordRef= useRef();
     const {signIn} = useAuth();
     const [userCredential, setUserCredential] = useState();
+    
     async function handleSubmit(e){
         e.preventDefault();
 
         //Sign In cu EmailRef si PasswordRef 
         setUserCredential(await signIn(emailRef.current.value, passwordRef.current.value))
-        
-      
-
     }
 
     return (
