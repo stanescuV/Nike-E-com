@@ -51,7 +51,7 @@ export function AuthProvider({children}) {
                     //Merge am incercat sa pun clg in loc de return si merge
                     if(rr[0].is_admin) {setAdmin(user.uid)} else { alert("you are not an admin")}
                 })
-            } catch(err){console.log(err)}
+            } catch(err){console.log(err);  alert("you are not an admin")}
         }
     }
 

@@ -7,6 +7,25 @@ function Admin() {
     const emailRef = useRef();
     const passwordRef= useRef();
 
+    function seasonalSales(season){
+
+        if(!season){
+            localStorage.removeItem('season');
+        } else {
+            localStorage.removeItem('season');
+            localStorage.setItem(`season`, JSON.stringify(season))
+        }
+
+    }
+
+    const divAdminButtons = (
+        <div className='admin-buttons' style={{display:"flex", justifyContent:"space-between", alignItems: "center" , flexDirection:"column"}}>
+            <button className='winter'onClick={()=> seasonalSales("winter")}>Winter Sales</button>
+            <button className='summer' onClick={()=> seasonalSales("summer")}>Summer Sales</button>
+            <button className='deleteSales' onClick={()=> seasonalSales()}>No Sales</button>
+            
+        </div>
+    )
 
     const divLogin = 
     (
@@ -33,7 +52,11 @@ function Admin() {
     return (
     
     <div className="form-sign-in">
-        {admin && admin.length>0 && <>Hi Mr Admin</>}
+        {admin && admin.length>0 && 
+        <>
+            <h2>Hi Mr Admin </h2>
+            {divAdminButtons}
+        </>}
         {!admin && divLogin}
     </div>
     

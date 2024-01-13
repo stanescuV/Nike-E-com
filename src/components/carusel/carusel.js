@@ -8,15 +8,18 @@ import { CartContext } from "../../App";
 
 export default function Carusel() {
   const [date, setDate] = useState([]);
-
+  const [modifiedDate, setModifiedDate] = useState("");
+  let season = localStorage.getItem("season");
   const { cart, setCart } = useContext(CartContext);
 
+  //checks seasonality 
+  
   // INITIALIZAM CART UL LA INCEPUT SI IL BAGAM IN LOCAL STORAGE
   
   useEffect(() =>{localStorage.getItem("cart", JSON.stringify(cart))}
   , []);
   useEffect(()=>{localStorage.setItem("cart", JSON.stringify(cart))},[cart]);
-  //no implicit return on useEffect 
+  //no implicit return on useEffect   
 
   /*FUNCTION ADD ITEM cart*/
 
@@ -31,7 +34,7 @@ export default function Carusel() {
       setCart([...cart])
     } else {
       // If it doesn't exist
-      setCart([
+      setCart([ 
         ...cart,
         {
           name: item.name,
@@ -45,10 +48,11 @@ export default function Carusel() {
   }
 
   /*FETCH*/
-  useEffect(() => {
-    fetch("http://localhost:3001/data")
-      .then((r) => r.json())
-      .then((rr) => setDate(rr));
+  useEffect(() => { 
+    fetch("http://localhost:3001/data", {method: "POST", headers:{"Content-Type": "application/json"}, body:JSON.stringify({season : season})})
+    .then((r) => r.json())
+    .then((rr) => setDate(rr))
+   
   }, []);
 
   /*BREAK POINTS ELEMENTS TO SHOW */
