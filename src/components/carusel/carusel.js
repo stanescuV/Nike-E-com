@@ -49,7 +49,7 @@ export default function Carusel() {
 
   /*FETCH*/
   useEffect(() => { 
-    fetch("http://localhost:3001/data", {method: "POST", headers:{"Content-Type": "application/json"}, body:JSON.stringify({season : season})})
+    fetch("http://localhost:3001/data")
     .then((r) => r.json())
     .then((rr) => setDate(rr))
    
@@ -94,7 +94,7 @@ export default function Carusel() {
           <img className="sneakers" src={item.src}></img>
           <div className="sneakers-info">
             <h4 id="sneakers-name">{item.name.toUpperCase()}</h4>
-            <p id="sneakers-price"> R: {(item.pret * 1).toFixed(2)}$</p>
+            <p id="sneakers-price"> R: {(item.current_price * 1).toFixed(2)}$</p>
           </div>
           <div
             onClick={() => {
