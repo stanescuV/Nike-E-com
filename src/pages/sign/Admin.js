@@ -12,7 +12,7 @@ function Admin() {
     const inputRef = useRef();
 
 
-   
+    //fetch each time a letter is tpyed, and return a filtered array
 
     function fetchData(searchedLetter){
     fetch("http://localhost:3001/data")
@@ -24,9 +24,9 @@ function Admin() {
         setDate(result);
     })
     }
-  
     
-
+    
+    //div for admin login
     const divLogin = 
     (
     <div >
@@ -45,28 +45,38 @@ function Admin() {
     </div>
      );
     
+    //function that takes data and renders it 
     const divWithDate = (date)=>{
+        
         return date.map((item)=>(
             <div>
-            <div onClick={()=>setInput(item.name)}>{item.name}</div>
+            <div onClick={()=>{handleChange(item.name)}}>{item.name}</div>
+            <>Current price</>
+            <p>{item.price}</p>
+            <input defaultValue={item.current_price}></input>
+            <button>Submit New price</button>
+            <img src={item.src} style={{width:"60px", height:"60px"}}></img>
             <br />
             </div>
         ))
     }
 
-    //fetch discount 
-    // function fetchDiscount (){
-    //     fetch("http://localhost:3001/discount", {method: "POST", headers:{"Content-Type": "application/json"}, body:JSON.stringify({discount: discountRef.current.value, date: dateRef.current.value})})
-    // }
+    /*fetch discount 
+    function fetchDiscount (){
+        fetch("http://localhost:3001/discount", {method: "POST", headers:{"Content-Type": "application/json"}, body:JSON.stringify({discount: discountRef.current.value, date: dateRef.current.value})})
+    }
 
 
-    // sign in admin
+    sign in admin*/
    
+
+    //function to log the admin 
     async function handleSignInAdmin(){
         setAdmin(await signInAdmin(emailRef.current.value, passwordRef.current.value,setAdmin));
         await fetchData();
     }
 
+    //function that takes a the letter typed and puts in to the other functions as a parameter
     const handleChange = (searchedLetter)=>{
         const letter = searchedLetter.toLowerCase()
         setInput(searchedLetter);
