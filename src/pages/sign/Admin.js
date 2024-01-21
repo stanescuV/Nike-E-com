@@ -3,13 +3,15 @@ import { useAuth } from '../../contexts/AuthContext';
 
 function Admin() {
     const [admin, setAdmin] = useState("");
+    const [itemActive, setItemActive] = useState(false);
     const [date, setDate] = useState([]);
     const [input, setInput] = useState("");
+    const [price, setPrice]= useState(0);
     const { currentUser, signInAdmin } = useAuth();
     const emailRef = useRef();
     const passwordRef= useRef();
     const discountRef = useRef();
-    const inputRef = useRef();
+    const priceRef = useRef();
 
 
     //fetch each time a letter is tpyed, and return a filtered array
@@ -24,6 +26,7 @@ function Admin() {
         setDate(result);
     })
     }
+
     
     
     //div for admin login
@@ -50,13 +53,16 @@ function Admin() {
         
         return date.map((item)=>(
             <div>
-            <div onClick={()=>{handleChange(item.name)}}>{item.name}</div>
-            <>Current price</>
-            <p>{item.price}</p>
-            <input defaultValue={item.current_price}></input>
-            <button>Submit New price</button>
-            <img src={item.src} style={{width:"60px", height:"60px"}}></img>
-            <br />
+               {itemActive ? <>
+                <div onClick={()=>{handleChange(item.name)}}>{item.name}</div>
+                <div>
+                    <img src={item.src} style={{width:"60px", height:"60px"}}></img>
+                    <>Current price</>
+                    <input defaultValue={item.current_price} onChange={(e)=>setPrice(e.target.value)}></input>
+                    <button onClick={()=>modifyPrice(item)}>Submit New price</button>
+                </div>
+                <br />
+                </> : <div onClick={()=>{handleChange(item.name),setItemActive(true)}}>{item.name}</div> }
             </div>
         ))
     }
@@ -80,9 +86,20 @@ function Admin() {
     const handleChange = (searchedLetter)=>{
         const letter = searchedLetter.toLowerCase()
         setInput(searchedLetter);
+        setItemActive(false);
         fetchData(letter);
     }
 
+    // modify current price
+    async function modifyPrice(item){
+        let newPrice = Number(price);
+        try{
+            fetch("http://localhost:3001/price-db",
+            {method:"POST", 
+            headers :{"Content-Type" :"application/json"},
+            body: JSON.stringify({itemID : item.id, itemPrice : newPrice})} )
+        } catch (err){console.log(err)}
+    }
    
 
     return (
