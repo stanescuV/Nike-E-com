@@ -11,15 +11,15 @@ function Admin() {
     const emailRef = useRef();
     const passwordRef= useRef();
     const discountRef = useRef();
-    const priceRef = useRef();
 
 
     //fetch each time a letter is tpyed, and return a filtered array
-
+    /* in loc sa fac filter pe client ar trebui sa fac filter in DB */
     function fetchData(searchedLetter){
-    fetch("http://localhost:3001/data")
+    fetch(`http://localhost:3001/data?q=${searchedLetter}`) // /data?q=${searchedLetter}
     .then((r) => r.json())
     .then((rr) => {
+        console.log(rr)
         const result = rr.filter((item)=>{
             return searchedLetter && item.name.toLowerCase().includes(searchedLetter);
         });
@@ -98,6 +98,7 @@ function Admin() {
             {method:"POST", 
             headers :{"Content-Type" :"application/json"},
             body: JSON.stringify({itemID : item.id, itemPrice : newPrice})} )
+            .then(alert("Price has been modified"))
         } catch (err){console.log(err)}
     }
    
@@ -107,7 +108,7 @@ function Admin() {
     <div className="form-sign-in">
         {admin && admin.length>0 && 
         <>
-            <h2>Hi Mr Admin </h2>
+            <h2>Sa traiti Sefu ! </h2>
 
             <p>Here are the products : </p>
             <input placeholder='Search Item' value={input} onChange={(e)=> handleChange(e.target.value) } ></input>
