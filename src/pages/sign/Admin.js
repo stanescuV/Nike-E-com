@@ -1,16 +1,23 @@
-import React,{ useState, useRef} from 'react'
+import React,{ useState,useEffect, useRef} from 'react'
 import { useAuth } from '../../contexts/AuthContext';
 
 function Admin() {
     const [admin, setAdmin] = useState("");
+    const [listOfProducts, setListOfProducts] = useState([]);
     const [itemActive, setItemActive] = useState(false);
     const [date, setDate] = useState([]);
     const [input, setInput] = useState("");
     const [price, setPrice]= useState(0);
     const { currentUser, signInAdmin } = useAuth();
+    //refs for auth
     const emailRef = useRef();
     const passwordRef= useRef();
+    //refs for discount
     const discountRef = useRef();
+    const dateStartRef = useRef();
+    const dateEndRef = useRef();
+    const discountNameRef = useRef();
+
 
 
     //fetch each time a letter is tpyed, and return a filtered array
@@ -67,14 +74,63 @@ function Admin() {
         ))
     }
 
-    /*fetch discount 
+    //fetch discount 
     function fetchDiscount (){
         fetch("http://localhost:3001/discount", {method: "POST", headers:{"Content-Type": "application/json"}, body:JSON.stringify({discount: discountRef.current.value, date: dateRef.current.value})})
     }
 
+    
+    //fetch for products
+    useEffect(()=>{fetchProducts()},[]);
+    
+    
+    // internal fetch discount 
+    function fetchProducts (){
+        fetch("http://localhost:3001/products-discounts")
+        .then((r) => r.json())
+        .then((products) => {
+            // Add a 'checked' property to each product
+            const productsWithChecked = products.map(product => ({ ...product, checked: false }));
+            setListOfProducts(productsWithChecked);
+        });
+    }   
 
-    sign in admin*/
+        
+    
    
+    function handleCheckboxChange(product) {
+        // Update the checked state of the product
+        const updatedProducts = listOfProducts.map(p => {
+            if (p.id === product.id) {
+                return { ...p, checked: !p.checked };
+            }
+            return p;
+        });
+         setListOfProducts(updatedProducts);
+    }
+
+    //create checkbox for each data
+    function renderProducts(products){
+        return products.map((product, index) => {
+             return (
+                 <div key={index} style={{display: "flex", justifyContent:"space-between", alignItems:"center" }}>
+                     <label style={{marginRight:"10px" }}>{product.id + " " + product.name}</label>
+                     <input
+                      type="checkbox"
+                      checked={product.checked}
+                      onChange={() => handleCheckboxChange(product)}
+                     />
+                 </div>
+             );
+         });
+     }
+     
+    //list of products filtered
+    function filterList (listOfProducts){
+      return listOfProducts.filter((item)=> item.checked === true)
+    }
+     
+    
 
     //function to log the admin 
     async function handleSignInAdmin(){
@@ -105,18 +161,43 @@ function Admin() {
 
     return (
     
-    <div className="form-sign-in">
+    <div className="form-sign-in" style={{display:"flex", justifyContent:"center", alignItems:"center", flexDirection:"column"}}>
         {admin && admin.length>0 && 
         <>
+            <div style={{ border:"1px solid black", margin:"15px", padding:"20px"}}>
+
             <h2>Sa traiti Sefu ! </h2>
 
-            <p>Here are the products : </p>
+            <p>Search for the products : </p>
             <input placeholder='Search Item' value={input} onChange={(e)=> handleChange(e.target.value) } ></input>
             {date && date.length>0 && divWithDate(date)}
-            {/*Discount 
-             <input type='number' ref={discountRef}></input>
-            <input type= "date" ref={dateRef}></input>
-            <button onClick={()=>{fetchDiscount()}}> Submit</button> */}
+            </div>
+
+            <div className='discounts' style={{display:"flex", justifyContent:"center", alignItems:"center", flexDirection:"column", border:"1px solid black", margin:"15px", padding:"20px"}}>
+                <h2 >Discounts</h2>
+                <div>
+                    <label style={{marginRight:"20px"}}>Discount value</label>
+                    <input placeholder="20 = 20%" type='number' ref={discountRef}></input>
+                </div>
+                <div >
+                    <label style={{marginRight:"20px"}}>Starting Date</label>
+                    <input placeholder="Starting Date" type= "date" ref={dateStartRef}></input>
+                </div>
+                <div>
+
+                    <label style={{marginRight:"20px"}}>Ending Date</label>
+                    <input placeholder= "Ending Date" type= "date" ref={dateEndRef}></input>
+                </div>
+            
+                <div>
+                    <label style={{marginRight:"20px"}}>Discount Name</label>
+                    <input placeholder="Winter Season, EOM..." type='text' ref={discountNameRef}></input>
+                </div>
+
+                <div>{renderProducts(listOfProducts)}</div>
+
+                <button onClick={()=>{console.log(filterList(listOfProducts))}}> Submit</button>    
+            </div>
         </>}
         {!admin && divLogin}
     </div>

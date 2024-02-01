@@ -95,8 +95,8 @@ export default function Carusel() {
             <h4 id="sneakers-name">{item.name.toUpperCase()}</h4>
             <div style={{display:"flex", justifyContent:"space-between"}}>
 
-            <p id="sneakers-price"> {(item.newPrice * 1).toFixed(2)}$</p>
-            {item.DiscountsActive && item.DiscountsActive == "active"  && <p id="sneakers-old-price">{item.current_price}$</p>}
+            <p id="sneakers-price"> {(item.current_price * 1).toFixed(2)}$</p>
+            {item.DiscountsActive && item.DiscountsActive == "active"  && <p id="sneakers-old-price">{item.pret}$</p>}
             </div>
           </div>
           <div
