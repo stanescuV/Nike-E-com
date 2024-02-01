@@ -43,7 +43,16 @@
 #sneakers-price {
   padding: 0;
   margin: 0;
+  margin-right: 10px;
   font-size: 17px;
+}
+
+#sneakers-old-price{
+  padding: 0;
+  margin: 0;
+  font-size: 17px;
+  text-decoration: line-through;
+  color: gray;
 }
 
 /*REACT CAROUSEL */
@@ -81,6 +90,10 @@ button.rec-dot:focus {
     font-size: 20px;
   }
 
+  #sneakers-old-price {
+    font-size: 20px;
+  }
+
   .carusel-title {
     font-size: 8vh;
   }
@@ -100,9 +113,15 @@ button.rec-dot:focus {
     display: none;
   }
 
+
   #sneakers-price {
     font-size: 25px;
   }
+
+  #sneakers-old-price {
+    font-size: 25px;
+  }
+
 
   #sneakers-name {
     font-size: 27px;

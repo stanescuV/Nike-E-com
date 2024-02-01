@@ -8,8 +8,6 @@ import { CartContext } from "../../App";
 
 export default function Carusel() {
   const [date, setDate] = useState([]);
-  const [modifiedDate, setModifiedDate] = useState("");
-  let season = localStorage.getItem("season");
   const { cart, setCart } = useContext(CartContext);
 
   //checks seasonality 
@@ -38,7 +36,7 @@ export default function Carusel() {
         ...cart,
         {
           name: item.name,
-          price: item.pret,
+          price: item.newPrice,
           id: item.id,
           picture: item.src,
           quantity: 1,
@@ -88,13 +86,18 @@ export default function Carusel() {
   /*RENDER EACH ELEMENT */
 
   function renderItems(date) {
+
     return date.map((item) => (
       <div>
         <Item key={item.id}>
           <img className="sneakers" src={item.src}></img>
           <div className="sneakers-info">
             <h4 id="sneakers-name">{item.name.toUpperCase()}</h4>
-            <p id="sneakers-price"> R: {(item.current_price * 1).toFixed(2)}$</p>
+            <div style={{display:"flex", justifyContent:"space-between"}}>
+
+            <p id="sneakers-price"> {(item.newPrice * 1).toFixed(2)}$</p>
+            {item.DiscountsActive && item.DiscountsActive == "active"  && <p id="sneakers-old-price">{item.current_price}$</p>}
+            </div>
           </div>
           <div
             onClick={() => {
