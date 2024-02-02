@@ -74,13 +74,17 @@ function Admin() {
         ))
     }
 
+    
     //fetch discount 
     function fetchDiscount (){
         fetch("http://localhost:3001/discount",
          
         {method: "POST",
         headers:{"Content-Type": "application/json"}, 
-        body:JSON.stringify({discount: discountRef.current.value, dateStart: dateStartRef.current.value, dateEnd: dateEndRef.current.value, discountName: discountNameRef.current.value, products: filterList(listOfProducts)})})
+        body:JSON.stringify({discount: discountRef.current.value, dateStart: dateStartRef.current.value, dateEnd: dateEndRef.current.value, discountName: discountNameRef.current.value, products: filterList(listOfProducts)})}
+        )
+
+        alert("Discount has been applied");
     }
 
     
@@ -100,7 +104,23 @@ function Admin() {
     }   
 
         
-    
+    function handleAllCheckboxesTrue(products){
+        const checkedProducts = products.map((product)=> {
+            return {...product, checked: true}}
+            );
+
+            setListOfProducts(checkedProducts);
+    }
+
+    function handleAllCheckboxesFalse(products){
+        const checkedProducts = products.map((product)=> {
+            return {...product, checked: false}}
+            );
+
+            setListOfProducts(checkedProducts);
+    }
+
+
    
     function handleCheckboxChange(product) {
         // Update the checked state of the product
@@ -200,6 +220,8 @@ function Admin() {
                 </div>
 
                 <div>{renderProducts(listOfProducts)}</div>
+                <button onClick={()=>handleAllCheckboxesTrue(listOfProducts)}>Check All</button>
+                <button onClick={()=> handleAllCheckboxesFalse(listOfProducts)}> Delete All</button>
 
                 <button onClick={()=>{fetchDiscount()}}> Submit</button>    
             </div>
