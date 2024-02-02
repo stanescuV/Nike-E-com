@@ -133,7 +133,7 @@ function PopoverItem() {
             <p className="order-text" id="shipment-info">Delivery time 2-4 working days</p>
           </div>
           <div className="sum">
-            <p className="prices" id="total-price">{calcSubtotal(cart)}$</p>
+            <p className="prices" id="total-price">{calcSubtotal(cart).toFixed(2)}$</p>
             <p className="prices" id="shipment-price">10$</p>
           </div>
         </div>
