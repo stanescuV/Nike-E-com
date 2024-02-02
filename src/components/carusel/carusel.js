@@ -36,7 +36,7 @@ export default function Carusel() {
         ...cart,
         {
           name: item.name,
-          price: item.newPrice,
+          price: item.current_price,
           id: item.id,
           picture: item.src,
           quantity: 1,
