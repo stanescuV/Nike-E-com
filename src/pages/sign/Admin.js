@@ -66,7 +66,7 @@ function Admin() {
                     <img src={item.src} style={{width:"60px", height:"60px"}}></img>
                     <>Current price</>
                     <input defaultValue={item.current_price} onChange={(e)=>setPrice(e.target.value)}></input>
-                    <button onClick={()=>modifyPrice(item)}>Submit New price</button>
+                    <button onClick={()=>{modifyPrice(item)}}>Submit New price</button>
                 </div>
                 <br />
                 </> : <div onClick={()=>{handleChange(item.name),setItemActive(true)}}>{item.name}</div> }
@@ -76,7 +76,11 @@ function Admin() {
 
     //fetch discount 
     function fetchDiscount (){
-        fetch("http://localhost:3001/discount", {method: "POST", headers:{"Content-Type": "application/json"}, body:JSON.stringify({discount: discountRef.current.value, date: dateRef.current.value})})
+        fetch("http://localhost:3001/discount",
+         
+        {method: "POST",
+        headers:{"Content-Type": "application/json"}, 
+        body:JSON.stringify({discount: discountRef.current.value, dateStart: dateStartRef.current.value, dateEnd: dateEndRef.current.value, discountName: discountNameRef.current.value, products: filterList(listOfProducts)})})
     }
 
     
@@ -149,6 +153,7 @@ function Admin() {
     // modify current price
     async function modifyPrice(item){
         let newPrice = Number(price);
+        console.log(newPrice + " And the ID :" + item.id )
         try{
             fetch("http://localhost:3001/price-db",
             {method:"POST", 
@@ -196,7 +201,7 @@ function Admin() {
 
                 <div>{renderProducts(listOfProducts)}</div>
 
-                <button onClick={()=>{console.log(filterList(listOfProducts))}}> Submit</button>    
+                <button onClick={()=>{fetchDiscount()}}> Submit</button>    
             </div>
         </>}
         {!admin && divLogin}
