@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.356eae0d.css",
+    "main.js": "/static/js/main.3c1671e3.js",
+    "static/media/AirJordan.png": "/static/media/AirJordan.5ced0ee3a76b51f1b1fd.png",
+    "static/media/AirJordan2.png": "/static/media/AirJordan2.e3762f21ee9baffc2e56.png",
+    "static/media/nikeAir.png": "/static/media/nikeAir.e873457348859decff22.png",
+    "static/media/NewBalance.png": "/static/media/NewBalance.9f2c11e5a25e9fc41080.png",
+    "static/media/oakleyGlasses.png": "/static/media/oakleyGlasses.7edefab5011ec1c82dda.png",
+    "static/media/DharmaGothicE_Bold_R.otf": "/static/media/DharmaGothicE_Bold_R.2d0cd4d827d23794dcd9.otf",
+    "static/media/DharmaGothicE_ExLight_R.otf": "/static/media/DharmaGothicE_ExLight_R.2959ed544fb8d467683b.otf",
+    "static/media/DharmaGothicE_Regular_R.otf": "/static/media/DharmaGothicE_Regular_R.ddcca876b09254983e52.otf",
+    "static/media/DharmaGothicE_Heavy_R.otf": "/static/media/DharmaGothicE_Heavy_R.2d65d70f69444f437af9.otf",
+    "static/media/logo-footer.png": "/static/media/logo-footer.9482b7f1724affb8e1e2.png",
+    "static/media/gh.png": "/static/media/gh.f11021803f68852df283.png",
+    "static/media/fb.png": "/static/media/fb.8d51a55626e9bf107f8f.png",
+    "index.html": "/index.html",
+    "main.356eae0d.css.map": "/static/css/main.356eae0d.css.map",
+    "main.3c1671e3.js.map": "/static/js/main.3c1671e3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.356eae0d.css",
+    "static/js/main.3c1671e3.js"
+  ]
+}
