@@ -96,7 +96,7 @@ export default function Carusel() {
             <div style={{display:"flex", justifyContent:"space-between"}}>
 
             <p id="sneakers-price"> {(item.current_price * 1).toFixed(2)}$</p>
-            {item.DiscountsActive && item.DiscountsActive == "active"  && <p id="sneakers-old-price">{item.pret}$</p>}
+            {item.current_price !== item.pret  && <p id="sneakers-old-price">{item.pret}$</p>}
             </div>
           </div>
           <div
