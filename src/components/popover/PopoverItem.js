@@ -101,7 +101,7 @@ function PopoverItem() {
       <div  >
         <button style={{cursor:"pointer"}} onClick={()=>{
         
-        fetch('http://localhost:3001/create-checkout-session',{
+        fetch(`${process.env.REACT_APP_SERVER}/create-checkout-session`,{
           method: "POST",
           headers: {
             "Content-Type": "application/json"

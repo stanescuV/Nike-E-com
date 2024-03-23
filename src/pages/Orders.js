@@ -16,7 +16,7 @@ function Orders() {
 
   // Fetch to get the current user's orders
   useEffect(() => {
-    fetch(`http://localhost:3001/orders/${currentUser && currentUser.uid}`)
+    fetch(`${process.env.REACT_APP_SERVER}/orders/${currentUser && currentUser.uid}`)
       .then((r) => r.json())
       .then((rr) => setData(rr));
   }, [currentUser]);

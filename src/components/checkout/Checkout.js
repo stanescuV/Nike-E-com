@@ -34,7 +34,7 @@ function Checkout() {
 
 
   function trimiteDate (comanda){
-    fetch('http://localhost:3001/comanda', {
+    fetch(`${process.env.REACT_APP_SERVER}/comanda`, {
         method: "POST",
         headers: {
           "Content-Type":"application/json",

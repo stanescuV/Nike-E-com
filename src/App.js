@@ -23,6 +23,7 @@ export const CartContext = createContext([]);
 
 
 function App() {
+  console.log(process.env.REACT_APP_SERVER)
   let existingCart = localStorage.getItem("cart");
   const [cart, setCart] = useState(existingCart ? JSON.parse(existingCart) : []);
 

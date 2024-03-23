@@ -47,7 +47,7 @@ export default function Carusel() {
 
   /*FETCH*/
   useEffect(() => { 
-    fetch("http://localhost:3001/data")
+    fetch(`${process.env.REACT_APP_SERVER}/data`)
     .then((r) => r.json())
     .then((rr) => setDate(rr))
    

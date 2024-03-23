@@ -23,7 +23,7 @@ function Admin() {
     //fetch each time a letter is tpyed, and return a filtered array
     /* in loc sa fac filter pe client ar trebui sa fac filter in DB */
     function fetchData(searchedLetter){
-    fetch(`http://localhost:3001/data?q=${searchedLetter}`) // /data?q=${searchedLetter}
+    fetch(`${process.env.REACT_APP_SERVER}/data?q=${searchedLetter}`) // /data?q=${searchedLetter}
     .then((r) => r.json())
     .then((rr) => {
         console.log(rr)
@@ -77,7 +77,7 @@ function Admin() {
     
     //fetch discount 
     function fetchDiscount (){
-        fetch("http://localhost:3001/discount",
+        fetch(`${process.env.REACT_APP_SERVER}/discount`,
          
         {method: "POST",
         headers:{"Content-Type": "application/json"}, 
@@ -94,7 +94,7 @@ function Admin() {
     
     // internal fetch discount 
     function fetchProducts (){
-        fetch("http://localhost:3001/products-discounts")
+        fetch(`${process.env.REACT_APP_SERVER}/products-discounts`)
         .then((r) => r.json())
         .then((products) => {
             // Add a 'checked' property to each product
@@ -175,7 +175,7 @@ function Admin() {
         let newPrice = Number(price);
         console.log(newPrice + " And the ID :" + item.id )
         try{
-            fetch("http://localhost:3001/price-db",
+            fetch(`${process.env.REACT_APP_SERVER}/price-db`,
             {method:"POST", 
             headers :{"Content-Type" :"application/json"},
             body: JSON.stringify({itemID : item.id, itemPrice : newPrice})} )

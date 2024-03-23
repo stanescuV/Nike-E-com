@@ -17,7 +17,7 @@ export function AuthProvider({children}) {
             .then((userCredential)=> {
                 userCredential.user.email;
                 userCredential.user.uid; 
-                fetch(`http://localhost:3001/info-user`,{method: "POST", headers:{"Content-Type": "application/json"}, body:JSON.stringify({email : userCredential.user.email, uid :  userCredential.user.uid }) })
+                fetch(`${process.env.REACT_APP_SERVER}/info-user`,{method: "POST", headers:{"Content-Type": "application/json"}, body:JSON.stringify({email : userCredential.user.email, uid :  userCredential.user.uid }) })
             })
    
     }
@@ -45,7 +45,7 @@ export function AuthProvider({children}) {
         const user = userCredential.user;
         if(user){
             try{
-                fetch("http://localhost:3001/admin", {method: "POST", headers:{"Content-Type": "application/json"}, body:JSON.stringify({uid : user.uid})})
+                fetch(`${process.env.REACT_APP_SERVER}/admin`, {method: "POST", headers:{"Content-Type": "application/json"}, body:JSON.stringify({uid : user.uid})})
                 .then(r=>r.json())
                 .then(rr=>{
                     //Merge am incercat sa pun clg in loc de return si merge
