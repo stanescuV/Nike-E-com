@@ -104,7 +104,7 @@ export default function Carusel() {
               addItemCart(item);
             }}
           >
-            <IconButton key={item.id} />
+            <IconButton  key={item.id} />
           </div>
         </Item>
       </div>
