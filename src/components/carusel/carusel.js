@@ -99,7 +99,7 @@ export default function Carusel() {
             {item.current_price !== item.pret  && <p id="sneakers-old-price">{item.pret}$</p>}
             </div>
           </div>
-          <div
+          <div 
             onClick={() => {
               addItemCart(item);
             }}
