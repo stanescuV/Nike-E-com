@@ -26,10 +26,10 @@
     "web-vitals": "^3.5.0"
   },
   "scripts": {
-    "start:dev":"env-cmd -f .env.dev react-scripts start",
-    "star:prod":"env-cmd -f .env.prod react-scripts start",
+    "start:dev":"env-cmd -f .dev react-scripts start",
+    "star:prod":"env-cmd -f .prod react-scripts start",
     "start": "react-scripts start",
-    "build": "env-cmd -f .env.prod react-scripts build",
+    "build": "env-cmd -f .prod react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
