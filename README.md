@@ -7,3 +7,5 @@ It is a simple website that uses React as the main frontend framework.
 If you want to check the Backend, go and check Nike-Server repo(made with express and mssql)
 
 If you want to connect to the stripe API and order something, use v@gmail.com  as email and password : 12345678
+
+Here's a yt video on how to connect https://youtu.be/cQ1KIoUb4u8
