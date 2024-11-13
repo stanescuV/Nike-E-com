@@ -1,6 +1,6 @@
 import "./App.css";
 import { createContext, useEffect, useState } from "react";
-import { Route, Routes, json } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Launches from "./pages/Launches";
 import Sneakers from "./pages/Sneakers";
